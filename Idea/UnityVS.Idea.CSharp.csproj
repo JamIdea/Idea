@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Assets\ButtonBehaviourScript.cs" />
     <Compile Include="Assets\PeaksBehaviourScript.cs" />
+    <Compile Include="Assets\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\ScenarioBehaviourScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
