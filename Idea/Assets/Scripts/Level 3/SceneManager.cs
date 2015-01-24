@@ -35,8 +35,16 @@ public class SceneManager : MonoBehaviour
 
     private void AttachCameraToRock()
     {
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Rock.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
-        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 10f, Time.deltaTime);
+        if (Rock != null)
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Rock.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 10f, Time.deltaTime);
+        }
+        else
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Player.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 7f, Time.deltaTime);
+        }
         //Camera.main.transform.localPosition = new Vector3(Rock.transform.localPosition.x, Rock.transform.localPosition.y, Camera.main.transform.localPosition.z);
     }
 
