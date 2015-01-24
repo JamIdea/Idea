@@ -16,7 +16,7 @@ public class MainCharacter : MonoBehaviour
 
     //Game object names
 
-    string background = "BackGround";
+    string background = "Platform";
     string objectKiller = "ObjectKiller";
     string jumpTransitionName = "NeedJump";
 
@@ -76,7 +76,7 @@ public class MainCharacter : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name == background)
+        if (collision.gameObject.tag == background)
             Jump();
     }
 
