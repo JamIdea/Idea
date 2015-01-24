@@ -11,16 +11,22 @@ public class SceneManager : MonoBehaviour
     void Start()
     {
         attachedToCamera = true;
-        BeginPlayerAnimation();
+        StartCoroutine("BeginPlayerAnimation");
     }
 
     IEnumerator BeginPlayerAnimation()
     {
+        Debug.Log("begin");
         yield return new WaitForSeconds(1);
-        Player.GetComponent<Animator>().Play("JumplingPlayer");
-        yield return new WaitForSeconds(1);
+        Player.GetComponent<Animator>().Play("JumpingPlayer");
+        Debug.Log("wait 1");
+        Player.GetComponent<PlayerBehaviourScript>().Moving = false;
+        yield return new WaitForSeconds(2);
         AttachCameraToRock();
         Player.GetComponent<Animator>().Play("RuningPlayer");
+        Debug.Log("WAIT 2");
+        attachedToCamera = false;
+        Player.GetComponent<PlayerBehaviourScript>().Moving = false;
     }
 
     private void AttachCameraToRock()
@@ -31,10 +37,11 @@ public class SceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attachedToCamera)
+        if (attachedToCamera && Player.GetComponent<PlayerBehaviourScript>().Moving)
         {
             var tmpPosition = Camera.main.transform.localPosition;
             tmpPosition.x += velocity;
+            Camera.main.transform.localPosition = tmpPosition;
         }
 
     }
