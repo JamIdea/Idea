@@ -93,6 +93,7 @@ public class MainCharacter : MonoBehaviour
         {
             IsJumping = true;
             rigidbody2D.AddForce(jumpForce);
+            animation.Play("JumpingPlayer");
         }
     }
 
