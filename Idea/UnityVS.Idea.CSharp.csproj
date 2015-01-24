@@ -58,6 +58,7 @@
     <Compile Include="Assets\PeaksBehaviourScript.cs" />
     <Compile Include="Assets\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\ScenarioBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\AutoFade.cs" />
     <Compile Include="Assets\Scripts\Level 1\CamMouse.cs" />
     <Compile Include="Assets\Scripts\Level 1\DragableObject.cs" />
     <Compile Include="Assets\Scripts\Level 1\MainCharacter.cs" />
