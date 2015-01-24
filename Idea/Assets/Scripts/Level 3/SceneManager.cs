@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
         Player.GetComponent<Animator>().Play("RuningPlayer");
         Debug.Log("WAIT 2");
         attachedToCamera = false;
-        Player.GetComponent<PlayerBehaviourScript>().Moving = false;
+        Player.GetComponent<PlayerBehaviourScript>().Moving = true;
     }
 
     private void AttachCameraToRock()
