@@ -29,9 +29,10 @@ public class DragableObject : MonoBehaviour {
         }
     }
 
-    void OnColliderEnter2d(Collider2D collider){
+    void OnCollisionEnter2D(Collision2D collider)
+    {
         //if is a character this object must not move
-        if (collider.name == character)
+        if (collider.gameObject.name == character)
         {
             DragEnabled = false;
 
