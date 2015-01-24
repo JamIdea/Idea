@@ -58,6 +58,10 @@
     <Compile Include="Assets\PeaksBehaviourScript.cs" />
     <Compile Include="Assets\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\ScenarioBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Level 1\CamMouse.cs" />
+    <Compile Include="Assets\Scripts\Level 1\DragableObject.cs" />
+    <Compile Include="Assets\Scripts\Level 1\MainCharacter.cs" />
+    <Compile Include="Assets\Scripts\Level 1\MouseCameraControl.cs" />
     <Compile Include="Assets\Scripts\Level 3\SceneManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
