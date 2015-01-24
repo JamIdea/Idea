@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RockBehaviourScript : MonoBehaviour
 {
-    public float Lifes;
+    public int Lifes;
+    int maxLifes;
+    public List<Sprite> States;
 
     // Use this for initialization
     void Start()
     {
-
+        maxLifes = Lifes;
     }
 
     // Update is called once per frame
@@ -23,12 +26,12 @@ public class RockBehaviourScript : MonoBehaviour
                 PunchRock();
             }
         }
-       
+
     }
 
     void OnMouseDown()
     {
-            PunchRock();
+        PunchRock();
     }
 
     void PunchRock()
@@ -36,7 +39,10 @@ public class RockBehaviourScript : MonoBehaviour
         Lifes--;
         if (Lifes <= 0)
             Destroy(this.gameObject);
-       
+        else if (Lifes % 2 == 1)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = States[(maxLifes - Lifes) / 2];
+        }
         Debug.Log("Touched it");
     }
 }
