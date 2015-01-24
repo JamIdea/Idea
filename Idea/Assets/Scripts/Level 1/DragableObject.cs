@@ -7,10 +7,12 @@ public class DragableObject : MonoBehaviour {
     private Vector3 screenPoint;
     private Vector3 offset;
 
-    private string character = "MainCharcter";
+    private string character = "Player";
 
     public bool DragEnabled = true;
 
+    public bool EnableX = true;
+    public bool EnableY = true;
 
 
     void OnMouseDown()
@@ -25,7 +27,7 @@ public class DragableObject : MonoBehaviour {
         {
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
             Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-            transform.position = curPosition;
+            transform.position = new Vector3(EnableX?curPosition.x:transform.position.x, EnableY? curPosition.y:transform.position.y, curPosition.z);
         }
     }
 

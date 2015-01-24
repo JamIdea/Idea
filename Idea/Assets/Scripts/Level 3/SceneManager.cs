@@ -5,14 +5,14 @@ public class SceneManager : MonoBehaviour
 {
 
     public GameObject Player;
-    public GameObject Rock;
+    public GameObject Nut;
     public float velocity;
     private bool attachedToCamera;
     private Vector3 OldPosition;
     // Use this for initialization
     void Start()
     {
-        OldPosition = Rock.transform.localPosition;
+        OldPosition = Nut.transform.localPosition;
         attachedToCamera = true;
         StartCoroutine("BeginPlayerAnimation");
     }
@@ -29,14 +29,22 @@ public class SceneManager : MonoBehaviour
         Player.GetComponent<Animator>().Play("RuningPlayer");
         Debug.Log("WAIT 2");
         attachedToCamera = false;
-        Rock.rigidbody2D.gravityScale = 0.2f;
+        Nut.rigidbody2D.gravityScale = 0.2f;
         Player.GetComponent<PlayerBehaviourScript>().Moving = true;
     }
 
     private void AttachCameraToRock()
     {
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Rock.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
-        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 10f, Time.deltaTime);
+        if (Nut != null)
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Nut.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 10f, Time.deltaTime);
+        }
+        else
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Player.transform.position + new Vector3(-.04f, -.04f, -10f), Time.deltaTime);
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 7f, Time.deltaTime);
+        }
         //Camera.main.transform.localPosition = new Vector3(Rock.transform.localPosition.x, Rock.transform.localPosition.y, Camera.main.transform.localPosition.z);
     }
 

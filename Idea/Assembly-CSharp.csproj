@@ -50,12 +50,15 @@
      <Compile Include="Assets\PeaksBehaviourScript.cs" />
      <Compile Include="Assets\PlayerBehaviourScript.cs" />
      <Compile Include="Assets\ScenarioBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\AutoFade.cs" />
      <Compile Include="Assets\Scripts\Level 1\CamMouse.cs" />
      <Compile Include="Assets\Scripts\Level 1\DragableObject.cs" />
      <Compile Include="Assets\Scripts\Level 1\MainCharacter.cs" />
      <Compile Include="Assets\Scripts\Level 1\MouseCameraControl.cs" />
      <Compile Include="Assets\Scripts\Level 3\RockBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Level 3\SceneManager.cs" />
+     <Compile Include="Assets\Scripts\Level2\ColisionFuego.cs" />
+     <Compile Include="Assets\Scripts\Level2\CortarCuerda.cs" />
      <Compile Include="Assets\Scripts\Level4\SceneManagerScript.cs" />
      <Compile Include="Assets\Scripts\Level4\cameraMoving.cs" />
  <Reference Include="UnityEngine.UI">

@@ -19,6 +19,10 @@ public class MainCharacter : MonoBehaviour
     string background = "Platform";
     string objectKiller = "ObjectKiller";
     string jumpTransitionName = "NeedJump";
+    string finalObjectTag = "FinalObject";
+
+    string NextLevel = "Level3";
+
 
     // Use this for initialization
     void Start()
@@ -72,6 +76,11 @@ public class MainCharacter : MonoBehaviour
         if (collider.tag == objectKiller) {
             Die();
         }
+
+        if (collider.tag == finalObjectTag) //Level finished
+        {
+            FinishLevell();
+        }   
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -118,5 +127,10 @@ public class MainCharacter : MonoBehaviour
     void Die() {
         //temporal
         Reset();
+    }
+
+    void FinishLevell() {
+        //Application.LoadLevel(NextLevel);
+        AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
     }
 }
