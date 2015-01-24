@@ -12,18 +12,20 @@ public class MainCharacter : MonoBehaviour
     public float JumpFactor = 300;
     public float SpeedFactor = 10;
 
+    Animator animator;
 
     //Game object names
 
     string background = "BackGround";
     string objectKiller = "ObjectKiller";
+    string jumpTransitionName = "NeedJump";
 
     // Use this for initialization
     void Start()
     {
         speed = Vector3.right * SpeedFactor;
         jumpForce = Vector2.up * JumpFactor;
-
+        this.animator = this.GetComponent<Animator>();
     }
 
 
@@ -58,8 +60,6 @@ public class MainCharacter : MonoBehaviour
     {
         if (!IsStarted)
         {
-            IsStarted = true;
-            IsJumping = false;
             StartRun();
         }
         else
@@ -81,8 +81,10 @@ public class MainCharacter : MonoBehaviour
     }
 
     void StartRun() {
+        IsStarted = true;
         if (!IsRunning) {
-            IsRunning = true;            
+            IsRunning = true;
+            StopJump();
         }
     }
 
@@ -93,17 +95,28 @@ public class MainCharacter : MonoBehaviour
         {
             IsJumping = true;
             rigidbody2D.AddForce(jumpForce);
-            animation.Play("JumpingPlayer");
+            animator.SetBool(this.jumpTransitionName, true);
+            
         }
     }
 
     void StopJump()
     {
         if (IsJumping)
+        {
             IsJumping = false;
+            animator.SetBool(this.jumpTransitionName, false);
+        }
+
+    }
+
+    void Reset() {
+        Application.LoadLevel(Application.loadedLevel);
+    
     }
 
     void Die() {
-        Application.LoadLevel(Application.loadedLevel);
+        //temporal
+        Reset();
     }
 }
