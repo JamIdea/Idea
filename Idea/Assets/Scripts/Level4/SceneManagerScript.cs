@@ -39,8 +39,10 @@ public class SceneManagerScript : MonoBehaviour {
 		//Player.GetComponent<Animator>().Play("ScaredPlayer");
 
 		Debug.Log("wait 1");
-		Player.GetComponent<PlayerBehaviourScript>().Moving = true;
 		attachedToCamera = true;
+		AttachCameraToPlayer();
+		Player.GetComponent<PlayerBehaviourScript>().Moving = true;
+		yield return new WaitForSeconds(3);
 		//Player.GetComponent<Animator>().Play("RuningPlayer");
 
 	}
