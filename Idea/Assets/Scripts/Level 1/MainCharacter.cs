@@ -9,8 +9,8 @@ public class MainCharacter : MonoBehaviour
     public bool IsRunning = false;
     public bool IsJumping = false;
     public bool IsStarted = false;
-    public float JumpFactor = 300;
-    public float SpeedFactor = 10;
+    public float JumpFactor;
+    public float SpeedFactor;
 
     Animator animator;
 
@@ -27,6 +27,7 @@ public class MainCharacter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        IsStarted = true;
         speed = Vector3.right * SpeedFactor;
         jumpForce = Vector2.up * JumpFactor;
         this.animator = this.GetComponent<Animator>();
@@ -39,73 +40,62 @@ public class MainCharacter : MonoBehaviour
     {
 
 
-            
+
     }
 
     void FixedUpdate()
     {
-        if (IsStarted) {
-            if (IsRunning && !IsJumping) 
-                rigidbody2D.velocity = speed;
-            else if(IsRunning&&IsJumping) {
-                IsRunning = false;
-                IsStarted = false;
-                rigidbody2D.AddForce(jumpForce);
-            }            
-        }      
+        if (IsStarted)
+        {
+            this.transform.localPosition += new Vector3(SpeedFactor, 0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D gObject)
     {
-        if (!IsStarted)
-        {
-            StartRun(gObject);
-           
-        }
-        else
-        {
-            
-        }
+        StartRun(gObject);
+
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.tag == objectKiller) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == objectKiller)
+        {
             Die();
         }
 
         if (collider.tag == finalObjectTag) //Level finished
         {
             FinishLevell();
-        }   
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == background)
             Jump();
-        
+
 
     }
 
-    void StartRun(Collision2D collObject) {
-        if (!IsStarted && !IsRunning && IsOverPlatform(collObject))
-        {
-            IsStarted = true;
-            IsRunning = true;
-            StopJump();
-            
-        }
+    void StartRun(Collision2D collObject)
+    {
+
+        IsRunning = true;
+        StopJump();
+
     }
 
-    
+
     void Jump()
     {
         if (!IsJumping)
         {
             IsJumping = true;
-            rigidbody2D.AddForce(jumpForce);
+
+            rigidbody2D.AddForce(Vector3.up * JumpFactor, ForceMode2D.Impulse);
             animator.SetBool(this.jumpTransitionName, true);
-            
+
         }
     }
 
@@ -119,31 +109,25 @@ public class MainCharacter : MonoBehaviour
 
     }
 
-    bool IsOverPlatform(Collision2D collObject)
-    {
-        Debug.Log(renderer.bounds.size);
-        Vector3 platCenter = collObject.gameObject.renderer.bounds.max;
-        Vector3 playerCenter = renderer.bounds.min;
-        //float verticalDistance = (playerCenter - platCenter).y;
-       // bool isover = verticalDistance > renderer.bounds.size.y * .5;
-        bool isover = platCenter.y >= platCenter.y;
-        return isover;
-    }
 
-    void Reset() {
+
+    void Reset()
+    {
         AutoFade.LoadLevel(Application.loadedLevel, 1, 1, Color.black);
         //Application.LoadLevel(0);
-        
+
     }
 
-    void Die() {
+    void Die()
+    {
         //temporal
         Reset();
     }
 
-    void FinishLevell() {
-       AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
+    void FinishLevell()
+    {
+        AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
         //Application.LoadLevel(3);
-        
+
     }
 }

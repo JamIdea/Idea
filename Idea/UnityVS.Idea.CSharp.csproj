@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ButtonBehaviourScript.cs" />
+    <Compile Include="Assets\ParticlesBehaviourScript.cs" />
     <Compile Include="Assets\PeaksBehaviourScript.cs" />
     <Compile Include="Assets\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\ScenarioBehaviourScript.cs" />
