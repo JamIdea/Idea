@@ -51,20 +51,16 @@ public class MainCharacter : MonoBehaviour
                 IsRunning = false;
                 IsStarted = false;
                 rigidbody2D.AddForce(jumpForce);
-            }
-
-            
-        }
-
-        
-       
+            }            
+        }      
     }
 
     void OnCollisionEnter2D(Collision2D gObject)
     {
         if (!IsStarted)
         {
-            StartRun();
+            StartRun(gObject);
+           
         }
         else
         {
@@ -87,13 +83,17 @@ public class MainCharacter : MonoBehaviour
     {
         if (collision.gameObject.tag == background)
             Jump();
+        
+
     }
 
-    void StartRun() {
-        IsStarted = true;
-        if (!IsRunning) {
+    void StartRun(Collision2D collObject) {
+        if (!IsStarted && !IsRunning && IsOverPlatform(collObject))
+        {
+            IsStarted = true;
             IsRunning = true;
             StopJump();
+            
         }
     }
 
@@ -119,9 +119,21 @@ public class MainCharacter : MonoBehaviour
 
     }
 
+    bool IsOverPlatform(Collision2D collObject)
+    {
+        Debug.Log(renderer.bounds.size);
+        Vector3 platCenter = collObject.gameObject.renderer.bounds.max;
+        Vector3 playerCenter = renderer.bounds.min;
+        //float verticalDistance = (playerCenter - platCenter).y;
+       // bool isover = verticalDistance > renderer.bounds.size.y * .5;
+        bool isover = platCenter.y >= platCenter.y;
+        return isover;
+    }
+
     void Reset() {
-        Application.LoadLevel(Application.loadedLevel);
-    
+        AutoFade.LoadLevel(Application.loadedLevel, 1, 1, Color.black);
+        //Application.LoadLevel(0);
+        
     }
 
     void Die() {
@@ -130,7 +142,8 @@ public class MainCharacter : MonoBehaviour
     }
 
     void FinishLevell() {
-        //Application.LoadLevel(NextLevel);
-        AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
+       AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
+        //Application.LoadLevel(3);
+        
     }
 }
