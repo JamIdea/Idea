@@ -3,7 +3,8 @@ using System.Collections;
 
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class DragableObject : MonoBehaviour {
+public class DragableObject : MonoBehaviour
+{
 
     private Vector3 screenPoint;
     private Vector3 offset;
@@ -22,26 +23,27 @@ public class DragableObject : MonoBehaviour {
 
     void OnMouseDown()
     {
-        
+
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
     }
 
     void OnMouseDrag()
     {
 
-        
+
         if (DragEnabled)
         {
-            hand.SetActive(false);
+            if (hand != null)
+                hand.SetActive(false);
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
             Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
             //check max and mins
             float x, y, z;
-            x = Mathf.Min(EnableX?curPosition.x:transform.position.x,MaxPosX);
-            x = Mathf.Max(x,MinPoxX);
-            y = Mathf.Min( EnableY? curPosition.y:transform.position.y,MaxPosY);
-            y =  Mathf.Max(y, MinPoxY);
-            transform.position = new Vector3(x,y, curPosition.z);
+            x = Mathf.Min(EnableX ? curPosition.x : transform.position.x, MaxPosX);
+            x = Mathf.Max(x, MinPoxX);
+            y = Mathf.Min(EnableY ? curPosition.y : transform.position.y, MaxPosY);
+            y = Mathf.Max(y, MinPoxY);
+            transform.position = new Vector3(x, y, curPosition.z);
         }
     }
 
@@ -53,20 +55,20 @@ public class DragableObject : MonoBehaviour {
             DragEnabled = false;
 
         }
-    
+
     }
 
     // Use this for initialization
     void Start()
     {
-         
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
