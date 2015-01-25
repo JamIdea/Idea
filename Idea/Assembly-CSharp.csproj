@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Level 1\MouseCameraControl.cs" />
      <Compile Include="Assets\Scripts\Level 1\UpAndDownMovement.cs" />
      <Compile Include="Assets\Scripts\Level 3\LevelCompletedBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Level 3\ObjectKiller.cs" />
      <Compile Include="Assets\Scripts\Level 3\RockBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Level 3\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Level2\ColisionFuego.cs" />
