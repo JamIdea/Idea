@@ -21,7 +21,7 @@ public class MainCharacter : MonoBehaviour
     string jumpTransitionName = "NeedJump";
     string finalObjectTag = "FinalObject";
 
-    string NextLevel = "Level3";
+    public string NextLevel = "Level3";
 
 
     // Use this for initialization
