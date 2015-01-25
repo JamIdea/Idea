@@ -133,7 +133,6 @@ public class MainCharacter : MonoBehaviour
     }
 
     void FinishLevell(string nextLevel) {
-        //Application.LoadLevel(NextLevel);
         AutoFade.LoadLevel(nextLevel.Replace("FinalObject", ""), 2, 1, Color.black);
         //AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
     }
