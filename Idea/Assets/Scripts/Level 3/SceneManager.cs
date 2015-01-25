@@ -30,7 +30,7 @@ public class SceneManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         Player.GetComponent<Animator>().Play("ScaredPlayer");
         Debug.Log("wait 1");
-        Player.GetComponent<PlayerBehaviourScript>().IsRunning = false;
+        Player.GetComponent<PlayerBehaviourScript>().Moving = false;
         Player.rigidbody2D.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(2);
         AttachCameraToRock();
@@ -42,7 +42,7 @@ public class SceneManager : MonoBehaviour
         Player.transform.Rotate(new Vector3(0, 0, 22f));
         yield return new WaitForSeconds(2.5f);
         Destroy(Hand);
-        Player.GetComponent<PlayerBehaviourScript>().IsRunning = true;
+        Player.GetComponent<PlayerBehaviourScript>().Moving = true;
     }
 
     private void AttachCameraToRock()
@@ -63,7 +63,7 @@ public class SceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attachedToCamera && Player.GetComponent<PlayerBehaviourScript>().IsRunning)
+        if (attachedToCamera && Player.GetComponent<PlayerBehaviourScript>().Moving)
         {
             var tmpPosition = Camera.main.transform.localPosition;
             tmpPosition.x = Player.transform.localPosition.x + position;
