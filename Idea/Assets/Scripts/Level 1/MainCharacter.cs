@@ -124,6 +124,8 @@ public class MainCharacter : MonoBehaviour
         Reset();
     }
 
+    string finalObjectTag = "FinalObject";
+
     void FinishLevell()
     {
         AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);

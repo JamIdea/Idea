@@ -5,6 +5,9 @@ public class PlayerBehaviourScript : MonoBehaviour
 {
     public bool Moving;
     public float velocity;
+    public float jumpFactor;
+    string finalObjectTag = "FinalObject";
+    public string NextLevel;
 
     //Use this for initialization
     void Start()
@@ -26,7 +29,19 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        rigidbody2D.AddForce(Vector3.up * 5, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector3.up * jumpFactor, ForceMode2D.Impulse);
         this.GetComponent<Animator>().SetBool("NeedJump", true);
+        
+        if (collider.tag == finalObjectTag) //Level finished
+        {
+            FinishLevell();
+        }
+    }
+
+    void FinishLevell()
+    {
+        AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
+        //Application.LoadLevel(3);
+
     }
 }

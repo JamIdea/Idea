@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\AutoFade.cs" />
      <Compile Include="Assets\Scripts\Level 1\CamMouse.cs" />
      <Compile Include="Assets\Scripts\Level 1\DragableObject.cs" />
+     <Compile Include="Assets\Scripts\Level 1\LevelOneSceneManager.cs" />
      <Compile Include="Assets\Scripts\Level 1\MainCharacter.cs" />
      <Compile Include="Assets\Scripts\Level 1\MouseCameraControl.cs" />
      <Compile Include="Assets\Scripts\Level 1\UpAndDownMovement.cs" />
