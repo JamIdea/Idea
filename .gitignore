@@ -18,3 +18,6 @@ sysinfo.txt
 Idea/Assets/Scripts/Level4.meta~e08c78b66870dae61de3e68d946e0ae211098ec8
 Idea/Assets/Scripts/Level4.meta~e08c78b66870dae61de3e68d946e0ae211098ec8
 *.meta~e08c78b66870dae61de3e68d946e0ae211098ec8
+*.meta
+*.meta
+Idea/Assets/Scenes/About.unity.meta
