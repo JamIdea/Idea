@@ -68,10 +68,7 @@ public class MainCharacter : MonoBehaviour
         }
         else
         {
-            if (collider.tag == objectKiller)
-            {
-                Die();
-            }
+            
         }
     }
 
@@ -82,7 +79,7 @@ public class MainCharacter : MonoBehaviour
 
         if (collider.tag == finalObjectTag) //Level finished
         {
-            FinishLevell(collider.gameObject.name);
+            FinishLevell();
         }   
     }
 
@@ -132,9 +129,8 @@ public class MainCharacter : MonoBehaviour
         Reset();
     }
 
-    void FinishLevell(string nextLevel) {
+    void FinishLevell() {
         //Application.LoadLevel(NextLevel);
-        AutoFade.LoadLevel(nextLevel.Replace("FinalObject", ""), 2, 1, Color.black);
-        //AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
+        AutoFade.LoadLevel(NextLevel, 3, 1, Color.black);
     }
 }

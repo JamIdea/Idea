@@ -19,24 +19,7 @@ public class ColisionFuego : MonoBehaviour {
         if (colision.gameObject.name == "Cubeta")
         {
             ani.SetBool("Apagar", true);
-            Destroy(this.gameObject.GetComponent<BoxCollider2D>());
             Destroy(colision.transform.parent.gameObject);
         }
-        else if (colision.gameObject.name == "Player")
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    {
-        //temporal
-        Reset();
-    }
-
-    void Reset()
-    {
-        Application.LoadLevel(Application.loadedLevel);
-
     }
 }
